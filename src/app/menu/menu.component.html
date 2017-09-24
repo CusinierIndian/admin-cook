@@ -1,0 +1,27 @@
+
+ <div class="col-md-2">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <ul class="list-group">
+  <li class="nav-item"><a class="nav-link"  routerLinkActive="active" (click)= "setIndex1();">AddCookDetails</a></li>
+  <li class="nav-item"><a class="nav-link"  routerLinkActive="active" (click)= "setIndex2();">ViewCookDetails</a></li>
+  <li class="nav-item"><a class="nav-link"  routerLinkActive="active" (click)= "setIndex3();">UpdateCookDetails</a></li>
+  </ul>
+</div>
+<span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; MENU</span>
+ </div>
+    <div class="col-md-10" style="background-color:lavenderblush;">
+    <div *ngIf="redirectIndex1"> {{redirectIndex}}
+  <app-cook-details></app-cook-details>
+    </div>
+    <div *ngIf="redirectIndex2">{{redirectIndex}}
+        <div> RRRRRRRRRRRR </div>
+    </div>
+  
+     <div *ngIf="redirectIndex3">{{redirectIndex}}
+        <div> MMMMMMMMM </div>
+    </div>
+    </div>
+      
+   
+

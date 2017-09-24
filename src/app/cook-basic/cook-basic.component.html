@@ -1,0 +1,117 @@
+<div class="col-md-10">
+  <h1>Cook Basic Details Form</h1>
+  <form (ngSubmit)="addCook(cookForm.value)" #cookForm="ngForm">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control " id="name" required [(ngModel)]="model.name" name="name" #name="ngModel" required
+            minlength="4">
+          <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+            <div *ngIf="name.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select class="form-control" id="gender" required [(ngModel)]="model.gender" name="gender" #gender="ngModel">           
+  <option *ngFor="let gen of genders" [value]="gen" >{{gen}}</option>
+</select>
+          <div *ngIf="gender.errors && gender.touched" class="alert alert-danger">
+            <div *ngIf="gender.errors.required">Gender is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dateOfBirth">Date-of-Birth</label>
+          <my-date-picker name="mydate" [options]="myDatePickerOptions_DateOf_Birth"
+          [(ngModel)]="model1" required></my-date-picker>
+
+        </div>
+        <div class="form-group">
+          <label for="phoneNo">PhoneNumber</label>
+          <input type="text" class="form-control " required [(ngModel)]="model.phoneNo" id="phoneNo" name="phoneNo" required maxlength="10"
+            minlength="10" #phoneNo="ngModel">
+          <div *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)" class="alert alert-danger">
+
+            <div *ngIf="phoneNo.errors.required">
+              PhoneNo is required.
+            </div>
+            <div *ngIf="phoneNo.errors.minlength">
+              PhoneNo must be at max 10 characters long.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phoneNo">JoiningDate</label>
+          <my-date-picker name="mydate" [options]="myDatePickerOptions_Joining_Date"
+          [(ngModel)]="model1" required></my-date-picker>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
+      <div class="col-md-5">
+        <div class="form-group">
+          <label for="nativePlace">NativePlace</label>
+          <input type="text" class="form-control " required [(ngModel)]="model.nativePlace" id="nativePlace" name="nativePlace" #nativePlace="ngModel">
+          <div *ngIf="nativePlace.invalid && (nativePlace.dirty || nativePlace.touched)" class="alert alert-danger">
+
+            <div *ngIf="nativePlace.errors.required">
+              NativePlace is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="experience">Experience</label>
+          <input type="number" class="form-control " required [(ngModel)]="model.experience" id="experience" min="0" max="5" name="experience" #experience="ngModel">
+          <div *ngIf="experience.invalid && (experience.dirty || experience.touched)" class="alert alert-danger">
+
+            <div *ngIf="experience.errors.required">
+              Experience is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dateOfLeaving">DateOfLeaving</label>
+          <my-date-picker name="mydate" [options]="myDatePickerOptions_Date_Of_Leaving"
+          [(ngModel)]="model1" required></my-date-picker>
+                  </div>
+        <div class="form-group">
+          <label for="Workingstatus">Workingstatus</label>
+          <input type="text" class="form-control " required [(ngModel)]="model.workingstatus" id="workingstatus" name="workingstatus"
+            #workingstatus="ngModel">
+          <div *ngIf="workingstatus.invalid && (workingstatus.dirty || workingstatus.touched)" class="alert alert-danger">
+
+            <div *ngIf="workingstatus.errors.required">
+              Workingstatus is required.
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="currentPlace">CurrentPlace</label>
+          <input type="text" class="form-control " required [(ngModel)]="model.currentPlace" id="currentPlace" name="currentPlace"
+            #currentPlace="ngModel">
+          <div *ngIf="currentPlace.invalid && (currentPlace.dirty || currentPlace.touched)" class="alert alert-danger">
+
+            <div *ngIf="currentPlace.errors.required">
+              currentPlace is required.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5"></div>
+      <div class="col-md-2"> <button type="submit" class="btn btn-success" [disabled]="!cookForm.form.valid">Submit</button></div>
+      <div class="col-md-5"></div>
+
+    </div>
+  </form>
+</div>
