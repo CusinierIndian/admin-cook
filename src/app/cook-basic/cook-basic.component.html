@@ -5,8 +5,8 @@
       <div class="col-md-5">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" class="form-control " id="name" required [(ngModel)]="model.name" name="name" #name="ngModel" required
-            minlength="4">
+          <input type="text" class="form-control " id="name" required pattern="[a-zA-Z][a-zA-Z ]+" [(ngModel)]="model.name" name="name"
+            #name="ngModel" required minlength="4">
           <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
 
             <div *ngIf="name.errors.required">
@@ -15,43 +15,49 @@
             <div *ngIf="name.errors.minlength">
               Name must be at least 4 characters long.
             </div>
+            <div *ngIf="name.errors.pattern">
+              Only Alphabets are alllowed
+            </div>
           </div>
 
         </div>
 
         <div class="form-group">
           <label for="gender">Gender</label>
-          <select class="form-control" id="gender" required [(ngModel)]="model.gender" name="gender" #gender="ngModel">           
-  <option *ngFor="let gen of genders" [value]="gen" >{{gen}}</option>
+          <select class="form-control" id="gender" [(ngModel)]="selectedGender" required name="gender" #gender="ngModel">           
+            
+            <option  *ngFor="let gen of genders" [value]="gen" >{{gen}}</option>
 </select>
           <div *ngIf="gender.errors && gender.touched" class="alert alert-danger">
             <div *ngIf="gender.errors.required">Gender is required.</div>
+
           </div>
         </div>
         <div class="form-group">
           <label for="dateOfBirth">Date-of-Birth</label>
-          <my-date-picker name="mydate" [options]="myDatePickerOptions_DateOf_Birth"
-          [(ngModel)]="model1" required></my-date-picker>
+          <my-date-picker name="mydate1" [options]="myDatePickerOptions_DateOf_Birth" [(ngModel)]="model1" required></my-date-picker>
 
         </div>
         <div class="form-group">
           <label for="phoneNo">PhoneNumber</label>
-          <input type="text" class="form-control " required [(ngModel)]="model.phoneNo" id="phoneNo" name="phoneNo" required maxlength="10"
-            minlength="10" #phoneNo="ngModel">
+          <input type="text" class="form-control " required pattern="[0-9]*" [(ngModel)]="model.phoneNo" id="phoneNo" name="phoneNo"
+            required maxlength="10" minlength="10" #phoneNo="ngModel">
           <div *ngIf="phoneNo.invalid && (phoneNo.dirty || phoneNo.touched)" class="alert alert-danger">
 
             <div *ngIf="phoneNo.errors.required">
               PhoneNo is required.
             </div>
             <div *ngIf="phoneNo.errors.minlength">
-              PhoneNo must be at max 10 characters long.
+              PhoneNo must of 10 digit long.
+            </div>
+            <div *ngIf="phoneNo.errors.pattern">
+              PhoneNo should be only numbers.
             </div>
           </div>
         </div>
         <div class="form-group">
           <label for="phoneNo">JoiningDate</label>
-          <my-date-picker name="mydate" [options]="myDatePickerOptions_Joining_Date"
-          [(ngModel)]="model1" required></my-date-picker>
+          <my-date-picker name="mydate" [options]="myDatePickerOptions_Joining_Date" [(ngModel)]="model2" required></my-date-picker>
         </div>
       </div>
       <div class="col-md-2"></div>
@@ -68,19 +74,22 @@
         </div>
         <div class="form-group">
           <label for="experience">Experience</label>
-          <input type="number" class="form-control " required [(ngModel)]="model.experience" id="experience" min="0" max="5" name="experience" #experience="ngModel">
+          <input type="text" class="form-control " required pattern="[0-9]*" [(ngModel)]="model.experience" id="experience" name="experience"
+            #experience="ngModel">
           <div *ngIf="experience.invalid && (experience.dirty || experience.touched)" class="alert alert-danger">
 
             <div *ngIf="experience.errors.required">
               Experience is required.
             </div>
+            <div *ngIf="experience.errors.pattern">
+              Only numbers are required.
+            </div>
           </div>
         </div>
         <div class="form-group">
           <label for="dateOfLeaving">DateOfLeaving</label>
-          <my-date-picker name="mydate" [options]="myDatePickerOptions_Date_Of_Leaving"
-          [(ngModel)]="model1" required></my-date-picker>
-                  </div>
+          <my-date-picker name="mydate" [options]="myDatePickerOptions_Date_Of_Leaving" [(ngModel)]="model3" required></my-date-picker>
+        </div>
         <div class="form-group">
           <label for="Workingstatus">Workingstatus</label>
           <input type="text" class="form-control " required [(ngModel)]="model.workingstatus" id="workingstatus" name="workingstatus"

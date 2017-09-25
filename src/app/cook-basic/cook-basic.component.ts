@@ -14,21 +14,22 @@ import {IMyDpOptions} from 'mydatepicker';
 export class CookBasicComponent implements OnInit {
   model:Cook;
   genders = ['Male', 'Female'];
-  selectedGender=this.genders[1];
+  selectedGender=this.genders[0];
 
   public myDatePickerOptions_DateOf_Birth: IMyDpOptions = {
     // other options...
     todayBtnTxt: 'Today',
-    dateFormat: 'yyyy-mm-dd',
+    dateFormat: 'dd-mm-yyyy',
     firstDayOfWeek: 'mo',
     sunHighlight: true,
     inline: false,
-    disableUntil: {year: 1970, month: 1, day: 1}
+    disableUntil: {year: 1970, month: 1, day: 1},
+    disableSince:{year: 2000, month: 1, day: 1}
 };
 public myDatePickerOptions_Joining_Date: IMyDpOptions = {
   // other options...
   todayBtnTxt: 'Today',
-  dateFormat: 'yyyy-mm-dd',
+  dateFormat: 'dd-mm-yyyy',
   firstDayOfWeek: 'mo',
   sunHighlight: true,
   inline: false,
@@ -37,7 +38,7 @@ public myDatePickerOptions_Joining_Date: IMyDpOptions = {
 public myDatePickerOptions_Date_Of_Leaving: IMyDpOptions = {
   // other options...
   todayBtnTxt: 'Today',
-  dateFormat: 'yyyy-mm-dd',
+  dateFormat: 'dd-mm-yyyy',
   firstDayOfWeek: 'mo',
   sunHighlight: true,
   inline: false,
@@ -45,7 +46,9 @@ public myDatePickerOptions_Date_Of_Leaving: IMyDpOptions = {
 };
 
 // Initialized to specific date (09.10.2018).
-public model1: any = { date: { year: 2018, month: 10, day: 9 } };
+public model1: any = { date: { year: 1975, month: 1, day: 1 } };
+public model2: any = { date: { year: 2017, month: 8, day: 1 } };
+public model3: any = { date: { year: 2017, month: 8, day: 1 } };
 
   constructor(
     private cookService: CookService
@@ -60,7 +63,8 @@ public model1: any = { date: { year: 2018, month: 10, day: 9 } };
   
   submitted = false; //form not submited : default
     data: any; //this variable contains our data
-    addCook(data):void {        
+    addCook(data):void {  
+      this.submitted=true;      
     // this.data = JSON.stringify(data.value);
         console.log(data);
         
