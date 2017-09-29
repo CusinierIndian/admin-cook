@@ -1,4 +1,4 @@
-<div class="col-md-10">
+<div class="col-md-12">
   <h1>Cook Basic Details Form</h1>
   <form (ngSubmit)="addCook(cookForm.value)" #cookForm="ngForm">
     <div class="row">
@@ -88,7 +88,7 @@
         </div>
         <div class="form-group">
           <label for="dateOfLeaving">DateOfLeaving</label>
-          <my-date-picker name="mydate" [options]="myDatePickerOptions_Date_Of_Leaving" [(ngModel)]="model3" required></my-date-picker>
+          <my-date-picker name="mydate" [options]="myDatePickerOptions_Date_Of_Leaving" [(ngModel)]="model3"></my-date-picker>
         </div>
         <div class="form-group">
           <label for="Workingstatus">Workingstatus</label>

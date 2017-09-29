@@ -65,8 +65,8 @@ public model3: any = { date: { year: 2017, month: 8, day: 1 } };
     data: any; //this variable contains our data
     addCook(data):void {  
       this.submitted=true;      
-    // this.data = JSON.stringify(data.value);
-        console.log(data);
+    this.data = JSON.stringify(data);
+        console.log(this.data);
         
       this.cookService.addCook(data)
 
